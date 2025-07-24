@@ -124,7 +124,7 @@ The application connects to the live James Thew Chef API:
 ---
 
 ## 🌐 Live Demo
-Visit the live website: [Website](https://james-thew-web-app.vercel.app/)
+- **Visit the live website:** [Website](https://james-thew-web-app.vercel.app/)
 
 ---
 
