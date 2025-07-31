@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { apiDocs } from '../data/apiDocs';
 import Sidebar from '../components/docs/Sidebar';
 import MainContent from '../components/docs/MainContent';
@@ -34,13 +34,21 @@ const Docs = () => {
     const { initializeRequestData, updateRequestField, updateNestedField } = useRequestData(setRequestData);
     const { getCurrentEndpoint } = useEndpointHelpers(selectedCategory, selectedSubcategory, selectedEndpoint);
 
+    // Keep track of the current endpoint to avoid unnecessary reinitializations  
     const currentEndpoint = getCurrentEndpoint();
+    const endpointKey = `${selectedCategory}-${selectedSubcategory}-${selectedEndpoint}`;
+    const previousEndpointKeyRef = useRef('');
 
-    // Initialize request data when endpoint changes
+    // Initialize request data only when endpoint actually changes
     useEffect(() => {
-        const endpoint = getCurrentEndpoint();
-        initializeRequestData(endpoint);
-    }, [selectedCategory, selectedSubcategory, selectedEndpoint, getCurrentEndpoint, initializeRequestData]);
+        if (endpointKey !== previousEndpointKeyRef.current) {
+            previousEndpointKeyRef.current = endpointKey;
+            if (currentEndpoint) {
+                initializeRequestData(currentEndpoint);
+            }
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [endpointKey]); // Only depend on the endpoint key
 
     // Navigation handlers
     const handleCategorySelect = (categoryKey, category) => {
@@ -94,6 +102,7 @@ const Docs = () => {
     const handleTryIt = async () => {
         if (!currentEndpoint) return;
         
+        // Reset response and loading state
         setLoading(true);
         setResponse('');
 
@@ -160,7 +169,22 @@ const Docs = () => {
                 }
             }
             
-            const fullUrl = urlPath.startsWith('http') ? urlPath : `${serverUrl}${urlPath}`;
+            let fullUrl = urlPath.startsWith('http') ? urlPath : `${serverUrl}${urlPath}`;
+            
+            // Handle query parameters for GET requests
+            if (currentEndpoint.method === 'GET' && currentEndpoint.parameters && requestData && Object.keys(requestData).length > 0) {
+                const queryParams = new URLSearchParams();
+                
+                Object.entries(requestData).forEach(([key, value]) => {
+                    if (value !== undefined && value !== null && value !== '') {
+                        queryParams.append(key, value.toString());
+                    }
+                });
+                
+                if (queryParams.toString()) {
+                    fullUrl += (fullUrl.includes('?') ? '&' : '?') + queryParams.toString();
+                }
+            }
             const res = await fetch(fullUrl, fetchOptions);
             const data = await res.json();
             setResponse(JSON.stringify(data, null, 2));

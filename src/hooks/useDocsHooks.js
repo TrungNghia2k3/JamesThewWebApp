@@ -85,35 +85,79 @@ export const useTokenManagement = (setRoleTokens) => {
 };
 
 export const useRequestData = (setRequestData) => {
-    // Initialize request data based on current endpoint
-    const initializeRequestData = useCallback((endpoint) => {
-        if (!endpoint || !endpoint.requestBody) {
-            setRequestData({});
-            return;
+    // Helper function to extract parameters from sample request URL
+    const extractParametersFromSampleRequest = (endpoint) => {
+        const params = {};
+        
+        if (endpoint?.sampleRequest && endpoint?.parameters) {
+            try {
+                // Find URL in the sample request
+                const urlMatch = endpoint.sampleRequest.match(/(https?:\/\/[^\s'"]+)/);
+                if (urlMatch) {
+                    const url = new URL(urlMatch[0]);
+                    const searchParams = url.searchParams;
+                    
+                    // Extract each parameter value from the URL
+                    endpoint.parameters.forEach(param => {
+                        const value = searchParams.get(param.name);
+                        if (value !== null) {
+                            params[param.name] = value;
+                        }
+                    });
+                }
+            } catch (error) {
+                console.log('Could not extract parameters from sample request:', error);
+            }
         }
         
-        // Create empty structure based on the requestBody template
-        const initialData = {};
-        Object.keys(endpoint.requestBody).forEach(key => {
-            const value = endpoint.requestBody[key];
-            if (typeof value === 'string') {
-                initialData[key] = '';
-            } else if (typeof value === 'number') {
-                initialData[key] = 0;
-            } else if (typeof value === 'boolean') {
-                initialData[key] = false;
-            } else if (Array.isArray(value)) {
-                initialData[key] = [];
-            } else if (typeof value === 'object') {
-                initialData[key] = {};
-            } else {
-                initialData[key] = '';
-            }
-        });
-        setRequestData(initialData);
-    }, [setRequestData]);
+        return params;
+    };
 
-    // Update request data field
+    // Initialize request data based on current endpoint
+    const initializeRequestData = (endpoint) => {
+        setRequestData(() => {
+            // Clear all previous data and start fresh for new endpoint
+            const initialData = {};
+            
+            // Handle request body for POST/PUT/DELETE methods
+            if (endpoint?.requestBody && ['POST', 'PUT', 'DELETE'].includes(endpoint.method)) {
+                Object.keys(endpoint.requestBody).forEach(key => {
+                    // Only set if not already exists
+                    if (!(key in initialData)) {
+                        const value = endpoint.requestBody[key];
+                        if (typeof value === 'string') {
+                            initialData[key] = '';
+                        } else if (typeof value === 'number') {
+                            initialData[key] = 0;
+                        } else if (typeof value === 'boolean') {
+                            initialData[key] = false;
+                        } else if (Array.isArray(value)) {
+                            initialData[key] = [];
+                        } else if (typeof value === 'object') {
+                            initialData[key] = {};
+                        } else {
+                            initialData[key] = '';
+                        }
+                    }
+                });
+            }
+            
+            // Handle parameters for GET requests
+            if (endpoint?.parameters && endpoint.method === 'GET') {
+                // First, try to extract parameter values from the sample request
+                const sampleParams = extractParametersFromSampleRequest(endpoint);
+                
+                endpoint.parameters.forEach(param => {
+                    // Always set the parameter value (no "not already exists" check since we cleared data)
+                    initialData[param.name] = sampleParams[param.name] || '';
+                });
+            }
+            
+            return initialData;
+        });
+    };
+
+    // Update request data field - wrapped in useCallback for stability
     const updateRequestField = useCallback((field, value) => {
         setRequestData(prev => ({
             ...prev,

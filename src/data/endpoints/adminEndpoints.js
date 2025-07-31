@@ -235,6 +235,237 @@ export const adminEndpoints = {
         }
       ]
     },
+    categories: {
+      title: 'Categories Management',
+      description: 'Manage recipe categories and cuisines',
+      endpoints: [
+        {
+          title: 'Get All Categories',
+          method: 'GET',
+          url: '/protected/admin/categories',
+          endpoint: 'https://jamesthewwebapi.onrender.com/api/protected/admin/categories',
+          description: 'Retrieve all recipe categories',
+          requiresAuth: true,
+          accessLevel: 'private',
+          role: 'ADMIN',
+          permissions: [],
+          parameters: [],
+          sampleRequest: `fetch('https://jamesthewwebapi.onrender.com/api/protected/admin/categories', {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer <token>',
+    'Content-Type': 'application/json'
+  }
+})
+.then(res => res.json())
+.then(console.log);`,
+          sampleResponse: `{
+  "success": true,
+  "status": 200,
+  "message": "All categories fetched successfully",
+  "data": [
+    {
+      "id": 1,
+      "name": "American"
+    },
+    {
+      "id": 2,
+      "name": "British"
+    }
+  ]
+}`
+        },
+        {
+          title: 'Get Area by ID',
+          method: 'GET',
+          url: '/protected/admin/categories',
+          endpoint: 'https://jamesthewwebapi.onrender.com/api/protected/admin/categories',
+          description: 'Retrieve category by ID',
+          requiresAuth: true,
+          accessLevel: 'private',
+          role: 'ADMIN',
+          permissions: [],
+          parameters: [
+            { name: 'id', type: 'number', description: 'Category ID', required: true }
+          ],
+          sampleRequest: `fetch('https://jamesthewwebapi.onrender.com/api/protected/admin/categories?id=2', {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer <token>',
+    'Content-Type': 'application/json'
+  }
+})
+.then(res => res.json())
+.then(console.log);`,
+          sampleResponse: `{
+  "success": true,
+  "status": 200,
+  "message": "Category fetched successfully",
+  "data": {
+    "id": 2,
+    "name": "British"
+  }
+}`
+        },
+        {
+          title: 'Get Category by Name',
+          method: 'GET',
+          url: '/protected/admin/categories',
+          endpoint: 'https://jamesthewwebapi.onrender.com/api/protected/admin/categories',
+          description: 'Retrieve category by name',
+          requiresAuth: true,
+          accessLevel: 'private',
+          role: 'ADMIN',
+          permissions: [],
+          parameters: [
+            { name: 'name', type: 'string', description: 'Category name', required: true }
+          ],
+          sampleRequest: `fetch('https://jamesthewwebapi.onrender.com/api/protected/admin/categories?name=British', {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer <token>',
+    'Content-Type': 'application/json'
+  }
+})
+.then(res => res.json())
+.then(console.log);`,
+          sampleResponse: `{
+  "success": true,
+  "status": 200,
+  "message": "Category fetched successfully",
+  "data": {
+    "id": 2,
+    "name": "British"
+  }
+}`
+        },
+        {
+          title: 'Create Category',
+          method: 'POST',
+          url: '/protected/admin/categories',
+          endpoint: 'https://jamesthewwebapi.onrender.com/api/protected/admin/categories',
+          description: 'Create a new recipe category',
+          requiresAuth: true,
+          accessLevel: 'private',
+          role: 'ADMIN',
+          permissions: [],
+          requestBody: {
+            name: "Chinese"
+          },
+          validation: {
+            required: ['name'],
+            minLength: {
+              name: 2
+            },
+            maxLength: {
+              name: 50
+            }
+          },
+          parameters: [],
+          sampleRequest: `fetch('https://jamesthewwebapi.onrender.com/api/protected/admin/categories', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer <token>',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    name: "Chinese"
+  })
+})
+.then(res => res.json())
+.then(console.log);`,
+          sampleResponse: `{
+  "success": true,
+  "status": 200,
+  "message": "Category added successfully"
+}`
+        },
+        {
+          title: 'Update Category',
+          method: 'PUT',
+          url: '/protected/admin/categories',
+          endpoint: 'https://jamesthewwebapi.onrender.com/api/protected/admin/categories',
+          description: 'Update an existing category',
+          requiresAuth: true,
+          accessLevel: 'private',
+          role: 'ADMIN',
+          permissions: [],
+          requestBody: {
+            id: 34,
+            name: "Chinese"
+          },
+          validation: {
+            required: ['id', 'name'],
+            type: {
+              id: 'number'
+            },
+            minLength: {
+              name: 2
+            },
+            maxLength: {
+              name: 50
+            }
+          },
+          parameters: [],
+          sampleRequest: `fetch('https://jamesthewwebapi.onrender.com/api/protected/admin/categories', {
+  method: 'PUT',
+  headers: {
+    'Authorization': 'Bearer <token>',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    id: 34,
+    name: "Chinese"
+  })
+})
+.then(res => res.json())
+.then(console.log);`,
+          sampleResponse: `{
+  "success": true,
+  "status": 200,
+  "message": "Category updated successfully"
+}`
+        },
+        {
+          title: 'Delete Category',
+          method: 'DELETE',
+          url: '/protected/admin/categories',
+          endpoint: 'https://jamesthewwebapi.onrender.com/api/protected/admin/categories',
+          description: 'Delete a category',
+          requiresAuth: true,
+          accessLevel: 'private',
+          role: 'ADMIN',
+          permissions: [],
+          requestBody: {
+            id: 34
+          },
+          validation: {
+            required: ['id'],
+            type: {
+              id: 'number'
+            }
+          },
+          parameters: [],
+          sampleRequest: `fetch('https://jamesthewwebapi.onrender.com/api/protected/admin/categories', {
+  method: 'DELETE',
+  headers: {
+    'Authorization': 'Bearer <token>',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    id: 34
+  })
+})
+.then(res => res.json())
+.then(console.log);`,
+          sampleResponse: `{
+  "success": true,
+  "status": 200,
+  "message": "Category deleted successfully"
+}`
+        }
+      ]
+    },
     announcements: {
       title: 'Announcements Management',
       description: 'Manage contest announcements and winners',

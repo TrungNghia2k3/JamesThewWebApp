@@ -101,27 +101,27 @@ export const publicEndpoints = {
   .then(res => res.json())
   .then(console.log);`,
           sampleResponse: `{
-  "success": true,
-  "status": 200,
-  "message": "Recipe found",
-  "data": {
-    "id": 2,
-    "name": "Apple & Blackberry Crumble",
-    "category": "Dessert",
-    "area": "British",
-    "instructions": "Put the butter and sugar in a medium saucepan and melt together over a medium heat.",
-    "image": "https://jamesthewwebapi.onrender.com/api/images/recipes/apple-blackberry-crumble.jpg",
-    "ingredients": "120g Plain Flour. 60g Caster Sugar.",
-    "publishedOn": "2018-02-09",
-    "recipedBy": 32,
-    "prepareTime": "20 minutes",
-    "cookingTime": "25 minutes",
-    "yield": "6 servings",
-    "shortDescription": "Perfect for a cozy dinner party or a family gathering, serve warm with vanilla ice cream and enjoy the sweet and tangy flavors.",
-    "accessType": "FREE",
-    "comments": [],
-    "detailedInstructions": []
-  }
+    "success": true,
+    "status": 200,
+    "message": "Recipe found",
+    "data": {
+        "id": 1,
+        "name": "Apple Frangipan Tart",
+        "category": "Dessert",
+        "area": "British",
+        "instructions": "Preheat the oven to 200C/180C Fan/Gas.",
+        "image": "https://res.cloudinary.com/dmbpesu2z/image/upload/recipes/apple-frangipan-tart.jpg",
+        "ingredients": "175g/6oz digestive biscuits. 75g/3oz butter. 200g/7oz Bramley apples. 75g/3oz Salted Butter. 75g/3oz caster sugar. 2 free-range eggs, beaten. 75g/3oz ground almonds. 1 tsp almond extract. 50g/1¾oz flaked almonds.",
+        "publishedOn": "2019-04-11",
+        "recipedBy": 32,
+        "prepareTime": "30 minutes",
+        "cookingTime": "23 minutes",
+        "yield": "8 servings",
+        "shortDescription": "Indulge in the sweet and buttery flavors of this Apple Frangipan Tart, perfect for a crisp autumn evening or as a decadent dessert any time of the year. The combination of crunchy biscuit crust, creamy frangipane filling, and tender apple slices is sure to impress your guests. Serve warm with a dollop of whipped cream or a scoop of vanilla ice cream for an extra-special treat.",
+        "accessType": "FREE",
+        "comments": [],
+        "detailedInstructions": []
+    }
 }`
         },
         {
@@ -140,63 +140,41 @@ export const publicEndpoints = {
   .then(res => res.json())
   .then(console.log);`,
           sampleResponse: `{
-  "success": true,
-  "status": 200,
-  "message": "Free recipes fetched successfully",
-  "data": {
-    "recipes": [
-      {
-        "id": 18,
-        "name": "Tyler Smith's Air-Fryer Buffalo Wings",
-        "category": "Miscellaneous",
-        "area": "American",
-        "instructions": "Mix until evenly coated./nPlace the wings in the air fryer (make sure they are spaced without touching) and cook at 375° for 10-15 minutes.",
-        "image": "https://jamesthewwebapi.onrender.com/api/images/recipes/tyler-smith-s-air-fryer-buffalo-wings.jpg",
-        "ingredients": "18 chicken wings. 1/2 cup all-purpose flour. 1/4 cup cornstarch.",
-        "publishedOn": "2019-04-11",
-        "recipedBy": 14,
-        "prepareTime": "20 minutes",
-        "cookingTime": "15 minutes",
-        "yield": "4 servings",
-        "shortDescription": "Spicy and tangy buffalo-style air-fryer wings, perfect for a party or game day gathering.",
-        "accessType": "FREE",
-        "comments": [
-          {
-            "id": 25,
-            "userId": 0,
-            "recipeId": 18,
-            "content": "Rich and decadent!",
-            "date": "2025-05-06",
-            "rating": 0,
-            "isBanned": false
-          }
+    "success": true,
+    "status": 200,
+    "message": "Free recipes fetched successfully",
+    "data": {
+        "recipes": [
+            {
+                "id": 1,
+                "name": "Apple Frangipan Tart",
+                "category": "Dessert",
+                "area": "British",
+                "instructions": "Preheat the oven to 200C/180C Fan/Gas 6.Put the biscuits in a large re-sealable freezer bag and bash with a rolling pin into fine crumbs. Melt the butter in a small pan, then add the biscuit crumbs and stir until coated with butter. Tip into the tart tin and, using the back of a spoon, press over the base and sides of the tin to give an even layer. Chill in the fridge while you make the filling.",
+                "image": "https://res.cloudinary.com/dmbpesu2z/image/upload/recipes/apple-frangipan-tart.jpg",
+                "ingredients": "175g/6oz digestive biscuits. 75g/3oz butter. 200g/7oz Bramley apples. 75g/3oz Salted Butter. 75g/3oz caster sugar. 2 free-range eggs, beaten. 75g/3oz ground almonds. 1 tsp almond extract. 50g/1¾oz flaked almonds.",
+                "publishedOn": "2019-04-11",
+                "recipedBy": 32,
+                "prepareTime": "30 minutes",
+                "cookingTime": "23 minutes",
+                "yield": "8 servings",
+                "shortDescription": "Indulge in the sweet and buttery flavors of this Apple Frangipan Tart, perfect for a crisp autumn evening or as a decadent dessert any time of the year. The combination of crunchy biscuit crust, creamy frangipane filling, and tender apple slices is sure to impress your guests. Serve warm with a dollop of whipped cream or a scoop of vanilla ice cream for an extra-special treat.",
+                "accessType": "FREE",
+                "comments": [],
+                "nutrition": {
+                    "id": 0,
+                    "recipeId": 0
+                },
+                "detailedInstructions": []
+            },
+            {...},
+            {...},
+            {...}
         ],
-        "nutrition": {
-          "id": 7,
-          "calories": "538 calories",
-          "fat": "37g fat (16g saturated fat)",
-          "cholesterol": "69mg cholesterol",
-          "sodium": "303mg sodium",
-          "carbohydrate": "45g carbohydrate (23g sugars",
-          "fiber": "3g fiber)",
-          "protein": "11g protein.",
-          "recipeId": 18
-        },
-        "detailedInstructions": [
-          {
-            "id": 7562,
-            "name": "Make the crust",
-            "text": "Preheat the oven to 350°F. Line an 8-inch square baking pan with parchment, letting the ends extend up the sides.",
-            "image": "https://jamesthewwebapi.onrender.com/api/images/instructions/dubai-chocolate-cheesecake-bars-instruction-1.jpg",
-            "recipeId": 18
-          }
-        ]
-      }
-    ],
-    "currentPage": 1,
-    "totalPages": 154,
-    "totalItems": 1534
-  }
+        "currentPage": 1,
+        "totalPages": 154,
+        "totalItems": 1540
+    }
 }`
         },
         {
@@ -216,23 +194,41 @@ export const publicEndpoints = {
   .then(res => res.json())
   .then(console.log);`,
           sampleResponse: `{
-  "success": true,
-  "status": 200,
-  "message": "Free recipes fetched successfully",
-  "data": {
-    "recipes": [
-      {
-        "id": 18,
-        "name": "Tyler Smith's Air-Fryer Buffalo Wings",
-        "category": "Miscellaneous",
-        "area": "American",
-        "accessType": "FREE"
-      }
-    ],
-    "currentPage": 1,
-    "totalPages": 154,
-    "totalItems": 1534
-  }
+    "success": true,
+    "status": 200,
+    "message": "Free recipes fetched successfully",
+    "data": {
+        "recipes": [
+            {
+                "id": 1,
+                "name": "Apple Frangipan Tart",
+                "category": "Dessert",
+                "area": "British",
+                "instructions": "Preheat the oven to 200C/180C Fan/Gas 6.Put the biscuits in a large re-sealable freezer bag and bash with a rolling pin into fine crumbs. Melt the butter in a small pan, then add the biscuit crumbs and stir until coated with butter. Tip into the tart tin and, using the back of a spoon, press over the base and sides of the tin to give an even layer. Chill in the fridge while you make the filling.",
+                "image": "https://res.cloudinary.com/dmbpesu2z/image/upload/recipes/apple-frangipan-tart.jpg",
+                "ingredients": "175g/6oz digestive biscuits. 75g/3oz butter. 200g/7oz Bramley apples. 75g/3oz Salted Butter. 75g/3oz caster sugar. 2 free-range eggs, beaten. 75g/3oz ground almonds. 1 tsp almond extract. 50g/1¾oz flaked almonds.",
+                "publishedOn": "2019-04-11",
+                "recipedBy": 32,
+                "prepareTime": "30 minutes",
+                "cookingTime": "23 minutes",
+                "yield": "8 servings",
+                "shortDescription": "Indulge in the sweet and buttery flavors of this Apple Frangipan Tart, perfect for a crisp autumn evening or as a decadent dessert any time of the year. The combination of crunchy biscuit crust, creamy frangipane filling, and tender apple slices is sure to impress your guests. Serve warm with a dollop of whipped cream or a scoop of vanilla ice cream for an extra-special treat.",
+                "accessType": "FREE",
+                "comments": [],
+                "nutrition": {
+                    "id": 0,
+                    "recipeId": 0
+                },
+                "detailedInstructions": []
+            },
+            {...},
+            {...},
+            {...}
+        ],
+        "currentPage": 1,
+        "totalPages": 154,
+        "totalItems": 1540
+    }
 }`
         },
         {
@@ -252,23 +248,41 @@ export const publicEndpoints = {
   .then(res => res.json())
   .then(console.log);`,
           sampleResponse: `{
-  "success": true,
-  "status": 200,
-  "message": "Free recipes fetched successfully",
-  "data": {
-    "recipes": [
-      {
-        "id": 5,
-        "name": "Beef Stew",
-        "category": "Beef",
-        "area": "American",
-        "accessType": "FREE"
-      }
-    ],
-    "currentPage": 1,
-    "totalPages": 25,
-    "totalItems": 248
-  }
+    "success": true,
+    "status": 200,
+    "message": "Free recipes fetched successfully",
+    "data": {
+        "recipes": [
+            {
+                "id": 1,
+                "name": "Apple Frangipan Tart",
+                "category": "Dessert",
+                "area": "British",
+                "instructions": "Preheat the oven to 200C/180C Fan/Gas 6.Put the biscuits in a large re-sealable freezer bag and bash with a rolling pin into fine crumbs. Melt the butter in a small pan, then add the biscuit crumbs and stir until coated with butter. Tip into the tart tin and, using the back of a spoon, press over the base and sides of the tin to give an even layer. Chill in the fridge while you make the filling.",
+                "image": "https://res.cloudinary.com/dmbpesu2z/image/upload/recipes/apple-frangipan-tart.jpg",
+                "ingredients": "175g/6oz digestive biscuits. 75g/3oz butter. 200g/7oz Bramley apples. 75g/3oz Salted Butter. 75g/3oz caster sugar. 2 free-range eggs, beaten. 75g/3oz ground almonds. 1 tsp almond extract. 50g/1¾oz flaked almonds.",
+                "publishedOn": "2019-04-11",
+                "recipedBy": 32,
+                "prepareTime": "30 minutes",
+                "cookingTime": "23 minutes",
+                "yield": "8 servings",
+                "shortDescription": "Indulge in the sweet and buttery flavors of this Apple Frangipan Tart, perfect for a crisp autumn evening or as a decadent dessert any time of the year. The combination of crunchy biscuit crust, creamy frangipane filling, and tender apple slices is sure to impress your guests. Serve warm with a dollop of whipped cream or a scoop of vanilla ice cream for an extra-special treat.",
+                "accessType": "FREE",
+                "comments": [],
+                "nutrition": {
+                    "id": 0,
+                    "recipeId": 0
+                },
+                "detailedInstructions": []
+            },
+            {...},
+            {...},
+            {...}
+        ],
+        "currentPage": 1,
+        "totalPages": 154,
+        "totalItems": 1540
+    }
 }`
         },
         {
@@ -291,23 +305,41 @@ export const publicEndpoints = {
   .then(res => res.json())
   .then(console.log);`,
           sampleResponse: `{
-  "success": true,
-  "status": 200,
-  "message": "Free recipes fetched successfully",
-  "data": {
-    "recipes": [
-      {
-        "id": 18,
-        "name": "Tyler Smith's Air-Fryer Buffalo Wings",
-        "category": "Miscellaneous",
-        "area": "American",
-        "accessType": "FREE"
-      }
-    ],
-    "currentPage": 1,
-    "totalPages": 154,
-    "totalItems": 1534
-  }
+    "success": true,
+    "status": 200,
+    "message": "Free recipes fetched successfully",
+    "data": {
+        "recipes": [
+            {
+                "id": 1,
+                "name": "Apple Frangipan Tart",
+                "category": "Dessert",
+                "area": "British",
+                "instructions": "Preheat the oven to 200C/180C Fan/Gas 6.Put the biscuits in a large re-sealable freezer bag and bash with a rolling pin into fine crumbs. Melt the butter in a small pan, then add the biscuit crumbs and stir until coated with butter. Tip into the tart tin and, using the back of a spoon, press over the base and sides of the tin to give an even layer. Chill in the fridge while you make the filling.",
+                "image": "https://res.cloudinary.com/dmbpesu2z/image/upload/recipes/apple-frangipan-tart.jpg",
+                "ingredients": "175g/6oz digestive biscuits. 75g/3oz butter. 200g/7oz Bramley apples. 75g/3oz Salted Butter. 75g/3oz caster sugar. 2 free-range eggs, beaten. 75g/3oz ground almonds. 1 tsp almond extract. 50g/1¾oz flaked almonds.",
+                "publishedOn": "2019-04-11",
+                "recipedBy": 32,
+                "prepareTime": "30 minutes",
+                "cookingTime": "23 minutes",
+                "yield": "8 servings",
+                "shortDescription": "Indulge in the sweet and buttery flavors of this Apple Frangipan Tart, perfect for a crisp autumn evening or as a decadent dessert any time of the year. The combination of crunchy biscuit crust, creamy frangipane filling, and tender apple slices is sure to impress your guests. Serve warm with a dollop of whipped cream or a scoop of vanilla ice cream for an extra-special treat.",
+                "accessType": "FREE",
+                "comments": [],
+                "nutrition": {
+                    "id": 0,
+                    "recipeId": 0
+                },
+                "detailedInstructions": []
+            },
+            {...},
+            {...},
+            {...}
+        ],
+        "currentPage": 1,
+        "totalPages": 154,
+        "totalItems": 1540
+    }
 }`
         }
       ]
@@ -329,34 +361,37 @@ export const publicEndpoints = {
   .then(res => res.json())
   .then(console.log);`,
           sampleResponse: `{
-  "success": true,
-  "status": 200,
-  "message": "All contests fetched",
-  "data": [
-    {
-      "id": 1,
-      "articleBody": "With the current price of eggs, we decided this isn't the best time for this contest. So, get creative and show off your favorite lunches instead!",
-      "headline": "'Let's Do Lunch' Recipe Contest Announcement",
-      "description": "Who's ready for lunch? Show off your favorite lunch recipes for the chance to win $500.",
-      "datePublished": "2025-03-01",
-      "dateModified": "2025-03-01",
-      "accessRole": "GENERAL",
-      "contestImages": [
+    "success": true,
+    "status": 200,
+    "message": "All contests fetched",
+    "data": [
         {
-          "id": 1,
-          "contestId": 1,
-          "imagePath": "https://jamesthewwebapi.onrender.com/api/images/contests/Lets_Do_Lunch_Recipe_Contest_Announcement_1.jpg"
+            "id": 1,
+            "articleBody": "TASTE OF HOMEOur staff is busy with work and can&#8217;t wait for lunch! We&#8217;re looking for your quick and easy favorites to sustain us through the rest of the day.Tell us about your go-to recipe, including chicken wraps, change-of-pace pinwheels, Mediterranean salads and fun, new takes on lunchtime classics that kids can?t get enough of.Do you have a healthy noon meal you rely on? Maybe you amp up the flavors of a grab-and-go convenience item. Share the details with us!Submit your recipe between March 1 and May 31, 2025.What We?re Looking ForSandwiches, salads, bowls or anything you&#8217;d eat for lunchHot, cold or make-ahead optionsGrown-up meals or lunch box ideas for the kidsGet Inspired by Our Lunch RecipesDAN ROBERTS FOR TASTE OF HOME46 Sandwich Recipes That Aren&#039;t PB&amp;J44 of Our Best Cold Lunch IdeasTaste of Home35 Make-Ahead Lunch RecipesThe PrizesThree talented home cooks will have the chance to win:1st prize: $5002nd prize: $3003rd prize: $150How to EnterSubmit your recipe between March 1 and May 31, 2025.Submit Your RecipeLooking for the Everything Eggs recipe contest we teased in our Winter issue? With the current price of eggs, we decided this isn?t the best time for this contest. So, get creative and show off your favorite lunches instead!",
+            "headline": "'Let's Do Lunch' Recipe Contest Announcement",
+            "description": "Who's ready for lunch? Show off your favorite lunch recipes for the chance to win $500.",
+            "datePublished": "2025-03-01",
+            "dateModified": "2025-03-01",
+            "accessRole": "GENERAL",
+            "contestImages": [
+                {
+                    "id": 1,
+                    "contestId": 1,
+                    "imagePath": "https://res.cloudinary.com/dmbpesu2z/image/upload/contests/Lets_Do_Lunch_Recipe_Contest_Announcement_1.jpg"
+                },
+                {
+                    "id": 2,
+                    "contestId": 1,
+                    "imagePath": "https://res.cloudinary.com/dmbpesu2z/image/upload/contests/Lets_Do_Lunch_Recipe_Contest_Announcement_2.jpg"
+                }
+            ],
+            "isFree": true,
+            "isClosed": false
         },
-        {
-          "id": 2,
-          "contestId": 1,
-          "imagePath": "https://jamesthewwebapi.onrender.com/api/images/contests/Lets_Do_Lunch_Recipe_Contest_Announcement_2.jpg"
-        }
-      ],
-      "isFree": true,
-      "isClosed": false
-    }
-  ]
+        {...},
+        {...},
+        {...}
+    ]
 }`
         },
         {
@@ -374,32 +409,32 @@ export const publicEndpoints = {
   .then(res => res.json())
   .then(console.log);`,
           sampleResponse: `{
-  "success": true,
-  "status": 200,
-  "message": "Contest fetched successfully",
-  "data": {
-    "id": 4,
-    "articleBody": "Grand Prize: Chicken & Green Chile Stuffed Shells3 ReviewsContest WinnerTest Kitchen ApprovedTotal Time1 hour 15 minServings12 servingsGo to RecipeFrom the Recipe Creator:For a family potluck, I was told to bring a pasta casserole.",
-    "headline": "Our Make Take Recipe Contest",
-    "description": "Home cooks shared their favorite 'dish to pass' that they rely on for potlucks, get-togethers and bake sales. The best crowd-pleasing dishes in this list range from casseroles to cakes.",
-    "datePublished": "2024-11-11",
-    "dateModified": "2024-11-11",
-    "accessRole": "SUBSCRIBER",
-    "contestImages": [
-      {
-        "id": 7,
-        "contestId": 4,
-        "imagePath": "https://jamesthewwebapi.onrender.com/api/images/contests/Our_Make_Take_Recipe_Contest_1.jpg"
-      },
-      {
-        "id": 8,
-        "contestId": 4,
-        "imagePath": "https://jamesthewwebapi.onrender.com/api/images/contests/Our_Make_Take_Recipe_Contest_2.jpg"
-      }
-    ],
-    "isFree": true,
-    "isClosed": true
-  }
+    "success": true,
+    "status": 200,
+    "message": "Contest fetched successfully",
+    "data": {
+        "id": 4,
+        "articleBody": "Grand Prize: Chicken &amp; Green Chile Stuffed Shells3 ReviewsContest WinnerTest Kitchen ApprovedTotal Time1 hour 15 minServings12 servingsGo to RecipeFrom the Recipe Creator:For a family potluck, I was told to bring a pasta casserole. For these events, I usually make a lasagna. To switch things up, I modified my family&rsquo;s favorite chicken chile lasagna into a stuffed shells dish. The creamy, cheesy recipe is now the new favorite! &acirc;&#128;&#148;Donna Gribbins, Shelbyville, KentuckyNutrition Facts:3 stuffed shells: 501 calories, 32g fat (18g saturated fat), 117mg cholesterol, 872mg sodium, 27g carbohydrate (3g sugars, 2g fiber), 26g protein. Diabetic Exchanges: 2 starch.",
+        "headline": "Our Make Take Recipe Contest",
+        "description": "Home cooks shared their favorite dish to pass that they rely on for potlucks, get-togethers and bake sales. The best crowd-pleasing dishes in this list range from casseroles to cakes.&nbsp;",
+        "datePublished": "2024-11-11",
+        "dateModified": "2024-11-11",
+        "accessRole": "SUBSCRIBER",
+        "contestImages": [
+            {
+                "id": 7,
+                "contestId": 4,
+                "imagePath": "https://res.cloudinary.com/dmbpesu2z/image/upload/contests/Our_Make_Take_Recipe_Contest_1.jpg"
+            },
+            {
+                "id": 8,
+                "contestId": 4,
+                "imagePath": "https://res.cloudinary.com/dmbpesu2z/image/upload/contests/Our_Make_Take_Recipe_Contest_2.jpg"
+            }
+        ],
+        "isFree": true,
+        "isClosed": true
+    }
 }`
         }
       ]
@@ -421,29 +456,26 @@ export const publicEndpoints = {
   .then(res => res.json())
   .then(console.log);`,
           sampleResponse: `{
-  "success": true,
-  "status": 200,
-  "message": "All areas fetched successfully",
-  "data": [
-    {
-      "id": 1,
-      "name": "American",
-      "description": "American cuisine and recipes",
-      "recipeCount": 245
-    },
-    {
-      "id": 2,
-      "name": "British",
-      "description": "British cuisine and recipes",
-      "recipeCount": 156
-    },
-    {
-      "id": 3,
-      "name": "Italian",
-      "description": "Italian cuisine and recipes",
-      "recipeCount": 189
-    }
-  ]
+    "success": true,
+    "status": 200,
+    "message": "All areas fetched successfully",
+    "data": [
+        {
+            "id": 1,
+            "name": "American"
+        },
+        {
+            "id": 2,
+            "name": "British"
+        },
+        {
+            "id": 3,
+            "name": "Canadian"
+        }
+        {...},
+        {...},
+        {...}
+    ]
 }`
         },
         {
@@ -461,21 +493,37 @@ export const publicEndpoints = {
   .then(res => res.json())
   .then(console.log);`,
           sampleResponse: `{
-  "success": true,
-  "status": 200,
-  "message": "Area fetched successfully",
-  "data": {
-    "id": 1,
-    "name": "American",
-    "description": "American cuisine and recipes",
-    "recipeCount": 245,
-    "popularRecipes": [
-      {
-        "id": 18,
-        "name": "Tyler Smith's Air-Fryer Buffalo Wings"
-      }
-    ]
-  }
+    "success": true,
+    "status": 200,
+    "message": "Area fetched successfully",
+    "data": {
+        "id": 1,
+        "name": "American"
+    }
+}`
+        },
+        {
+          title: 'Get Area by Name',
+          method: 'GET',
+          url: '/areas',
+          endpoint: 'https://jamesthewwebapi.onrender.com/api/areas',
+          description: 'Retrieve area by name',
+          requiresAuth: false,
+          accessLevel: 'public',
+          parameters: [
+            { name: 'name', type: 'string', description: 'Area name', required: true }
+          ],
+          sampleRequest: `fetch('https://jamesthewwebapi.onrender.com/api/areas?name=British')
+  .then(res => res.json())
+  .then(console.log);`,
+          sampleResponse: `{
+    "success": true,
+    "status": 200,
+    "message": "Area fetched successfully",
+    "data": {
+        "id": 2,
+        "name": "British"
+    }
 }`
         }
       ]
@@ -497,29 +545,29 @@ export const publicEndpoints = {
   .then(res => res.json())
   .then(console.log);`,
           sampleResponse: `{
-  "success": true,
-  "status": 200,
-  "message": "All categories fetched successfully",
-  "data": [
-    {
-      "id": 1,
-      "name": "Beef",
-      "description": "Beef-based recipes",
-      "recipeCount": 78
-    },
-    {
-      "id": 2,
-      "name": "Dessert",
-      "description": "Sweet desserts and treats",
-      "recipeCount": 156
-    },
-    {
-      "id": 3,
-      "name": "Miscellaneous",
-      "description": "Various other recipes",
-      "recipeCount": 234
-    }
-  ]
+    "success": true,
+    "status": 200,
+    "message": "All categories fetched successfully",
+    "data": [
+        {
+            "id": 1,
+            "name": "Beef",
+            "path": "https://res.cloudinary.com/dmbpesu2z/image/upload/categories/beef.png"
+        },
+        {
+            "id": 2,
+            "name": "Breakfast",
+            "path": "https://res.cloudinary.com/dmbpesu2z/image/upload/categories/breakfast.png"
+        },
+        {
+            "id": 3,
+            "name": "Chicken",
+            "path": "https://res.cloudinary.com/dmbpesu2z/image/upload/categories/chicken.png"
+        }
+        {...},
+        {...},
+        {...}
+    ]
 }`
         },
         {
@@ -537,24 +585,38 @@ export const publicEndpoints = {
   .then(res => res.json())
   .then(console.log);`,
           sampleResponse: `{
+    "success": true,
+    "status": 200,
+    "message": "Category fetched successfully",
+    "data": {
+        "id": 1,
+        "name": "Beef",
+        "path": "https://res.cloudinary.com/dmbpesu2z/image/upload/categories/beef.png"
+    }
+}`
+        },
+        {
+          title: 'Get Category by Name',
+          method: 'GET',
+          url: '/categories',
+          endpoint: 'https://jamesthewwebapi.onrender.com/api/categories',
+          description: 'Retrieve category by name',
+          requiresAuth: false,
+          accessLevel: 'public',
+          parameters: [
+            { name: 'name', type: 'string', description: 'Category name', required: true }
+          ],
+          sampleRequest: `fetch('https://jamesthewwebapi.onrender.com/api/categories?name=Beef')
+  .then(res => res.json())
+  .then(console.log);`,
+          sampleResponse: `{
   "success": true,
   "status": 200,
   "message": "Category fetched successfully",
   "data": {
     "id": 1,
     "name": "Beef",
-    "description": "Beef-based recipes",
-    "recipeCount": 78,
-    "popularRecipes": [
-      {
-        "id": 5,
-        "name": "Classic Beef Stew"
-      },
-      {
-        "id": 12,
-        "name": "Beef Stroganoff"
-      }
-    ]
+    "path": "https://res.cloudinary.com/dmbpesu2z/image/upload/categories/beef.png"
   }
 }`
         }
