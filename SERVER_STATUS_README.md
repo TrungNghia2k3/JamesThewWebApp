@@ -134,11 +134,30 @@ Any deviation from this exact format will be treated as a server error.
 
 ## Configuration
 
-### Timeouts and Retries
+### Timeouts and Retries (Updated for Render.com)
 Edit `utils/config.js` to adjust:
-- `CHECK_TIMEOUT`: API call timeout (default: 10 seconds)
+- `CHECK_TIMEOUT`: 
+  - Production: 3 minutes (180 seconds) for initial wake-up
+  - Development: 10 seconds
+- `WAKE_UP_TIMEOUT`: 5 minutes total for complete wake-up process
 - `RETRY_INTERVAL`: Auto-retry interval (default: 5 seconds)
-- `MAX_RETRIES`: Maximum retry attempts (default: 3)
+- `MAX_RETRIES`: 
+  - Production: 5 attempts
+  - Development: 3 attempts
+- `RETRY_DELAY_INCREMENT`: Progressive delay increase (2 seconds per retry)
+
+### Wake-up Process for Render.com
+The application now handles Render.com's sleep/wake-up cycle:
+
+1. **First attempt**: Up to 5 minutes timeout to allow full wake-up
+2. **Progressive retries**: 5 attempts with increasing delays
+3. **User feedback**: Progress bar and informative messages
+4. **Smart error handling**: Distinguishes between wake-up delays and actual errors
+
+### Production vs Development Behavior
+- **Production**: Extended timeouts and retries for Render.com hosting
+- **Development**: Faster timeouts for local development
+- **Automatic detection**: Uses `import.meta.env.PROD` to determine environment
 
 ### API Base URL
 The application automatically uses:

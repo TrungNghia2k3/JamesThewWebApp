@@ -1,23 +1,34 @@
-import { useState, useEffect } from 'react';
-import { checkServerStatus } from '../utils/serverStatus';
+import { useState, useEffect, useCallback } from 'react';
+import { checkServerStatusWithWakeup } from '../utils/serverStatus';
 
 /**
  * Custom hook for checking server status
  * @param {Object} options - Configuration options
  * @param {boolean} options.autoCheck - Whether to automatically check on mount (default: true)
  * @param {number} options.retryInterval - Retry interval in milliseconds for failed checks
+ * @param {boolean} options.useWakeup - Whether to use wake-up retry logic (default: true)
  * @returns {Object} - Server status state and actions
  */
-export const useServerStatus = ({ autoCheck = true, retryInterval = null } = {}) => {
+export const useServerStatus = ({ 
+  autoCheck = true, 
+  retryInterval = null, 
+  useWakeup = true 
+} = {}) => {
   const [status, setStatus] = useState('idle'); // 'idle', 'checking', 'running', 'error'
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
+  const [progressInfo, setProgressInfo] = useState(null);
 
-  const checkStatus = async () => {
+  const checkStatus = useCallback(async () => {
     setStatus('checking');
     setError(null);
+    setProgressInfo(null);
 
-    const result = await checkServerStatus();
+    const result = useWakeup 
+      ? await checkServerStatusWithWakeup((progress) => {
+          setProgressInfo(progress);
+        })
+      : await checkServerStatusWithWakeup(); // Still use wake-up but without progress callback
 
     if (result.success) {
       setStatus('running');
@@ -28,15 +39,16 @@ export const useServerStatus = ({ autoCheck = true, retryInterval = null } = {})
       setError(result.error);
       setData(null);
     }
-
+    
+    setProgressInfo(null);
     return result;
-  };
+  }, [useWakeup]);
 
   useEffect(() => {
     if (autoCheck) {
       checkStatus();
     }
-  }, [autoCheck]);
+  }, [autoCheck, checkStatus]);
 
   useEffect(() => {
     let intervalId;
@@ -52,12 +64,13 @@ export const useServerStatus = ({ autoCheck = true, retryInterval = null } = {})
         clearInterval(intervalId);
       }
     };
-  }, [status, retryInterval]);
+  }, [status, retryInterval, checkStatus]);
 
   return {
     status,
     error,
     data,
+    progressInfo,
     checkStatus,
     isChecking: status === 'checking',
     isRunning: status === 'running',

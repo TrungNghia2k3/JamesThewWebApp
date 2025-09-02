@@ -3,7 +3,7 @@ import { useServerStatus } from '../hooks/useServerStatus';
 import ServerStatusIndicator from './ServerStatusIndicator';
 
 const ServerStatusTest = () => {
-  const { status, error, data, checkStatus, isChecking, isRunning, hasError } = useServerStatus({
+  const { status, error, data, progressInfo, checkStatus, isChecking, isRunning, hasError } = useServerStatus({
     autoCheck: false
   });
 
@@ -22,6 +22,14 @@ const ServerStatusTest = () => {
             {isChecking ? 'Checking...' : 'Check Server Status'}
           </button>
         </div>
+
+        {progressInfo && (
+          <div className="bg-blue-50 border border-blue-200 p-3 rounded">
+            <div className="font-medium text-blue-800">Progress:</div>
+            <div className="text-blue-600 text-sm">{progressInfo.message}</div>
+            <div className="text-blue-600 text-sm">Attempt {progressInfo.attempt} of {progressInfo.maxRetries}</div>
+          </div>
+        )}
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
           <div className="bg-white p-3 rounded border">

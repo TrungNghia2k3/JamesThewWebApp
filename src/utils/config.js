@@ -17,7 +17,9 @@ export const API_ENDPOINTS = {
 
 // Server status configuration
 export const SERVER_STATUS_CONFIG = {
-  CHECK_TIMEOUT: 10000, // 10 seconds timeout
+  CHECK_TIMEOUT: import.meta.env.PROD ? 180000 : 10000, // 3 minutes in prod, 10 seconds in dev
   RETRY_INTERVAL: 5000, // 5 seconds retry interval
-  MAX_RETRIES: 3
+  MAX_RETRIES: import.meta.env.PROD ? 5 : 3, // More retries in production
+  WAKE_UP_TIMEOUT: 300000, // 5 minutes total for wake-up process
+  RETRY_DELAY_INCREMENT: 2000 // Increase delay between retries
 };
