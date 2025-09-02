@@ -621,6 +621,36 @@ export const publicEndpoints = {
 }`
         }
       ]
+    },
+    system: {
+      title: 'System Status',
+      description: 'Check server and system status',
+      endpoints: [
+        {
+          title: 'Server Status Check',
+          method: 'GET',
+          url: '/server-status',
+          endpoint: 'https://jamesthewwebapi.onrender.com/api/server-status',
+          description: 'Check if the server is running and healthy. This endpoint is used to verify server availability before allowing access to the application.',
+          requiresAuth: false,
+          accessLevel: 'public',
+          parameters: [],
+          sampleRequest: `fetch('https://jamesthewwebapi.onrender.com/api/server-status', {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
+.then(res => res.json())
+.then(console.log);`,
+          sampleResponse: `{
+  "success": true,
+  "status": 200,
+  "message": "Server is running",
+  "data": "OK"
+}`
+        }
+      ]
     }
   }
 };

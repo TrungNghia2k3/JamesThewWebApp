@@ -2,6 +2,7 @@ import React from 'react';
 import HeroSection from '../components/home/HeroSection';
 import FeaturesGrid from '../components/home/FeaturesGrid';
 import StatsSection from '../components/home/StatsSection';
+import ServerStatusTest from '../components/ServerStatusTest';
 
 // API Access Levels Component
 const ApiAccessLevels = () => {
@@ -159,6 +160,11 @@ const Home = () => {
                 <ApiAccessLevels />
                 <PopularEndpoints />
                 <StatsSection />
+                
+                {/* Server Status Test Panel - For Development/Testing */}
+                <div className="mt-16">
+                    <ServerStatusTest />
+                </div>
             </div>
         </div>
     );
