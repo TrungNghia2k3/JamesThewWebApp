@@ -1,6 +1,7 @@
 import React from 'react';
 import { useServerStatus } from '../hooks/useServerStatus';
 import ServerStatusIndicator from './ServerStatusIndicator';
+import EnvironmentDebug from './EnvironmentDebug';
 
 const ServerStatusTest = () => {
   const { status, error, data, progressInfo, checkStatus, isChecking, isRunning, hasError } = useServerStatus({
@@ -76,6 +77,8 @@ const ServerStatusTest = () => {
             {`{"success": true, "status": 200, "message": "Server is running", "data": "OK"}`}
           </code>
         </div>
+
+        <EnvironmentDebug />
       </div>
     </div>
   );

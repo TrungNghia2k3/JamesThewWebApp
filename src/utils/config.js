@@ -7,11 +7,19 @@ export const API_BASE_URL = import.meta.env.PROD
   ? 'https://jamesthewwebapi.onrender.com'
   : '';
 
-// API endpoints
+// Helper function to create API URLs
+export const createApiUrl = (endpoint) => {
+  if (import.meta.env.PROD) {
+    return `${API_BASE_URL}${endpoint}`;
+  }
+  return endpoint; // Use relative URL in development (handled by Vite proxy)
+};
+
+// API endpoints - use helper function for consistent URL creation
 export const API_ENDPOINTS = {
-  SERVER_STATUS: '/api/server-status',
-  LOGIN: '/api/login',
-  REGISTER: '/api/register',
+  SERVER_STATUS: createApiUrl('/api/server-status'),
+  LOGIN: createApiUrl('/api/login'),
+  REGISTER: createApiUrl('/api/register'),
   // Add other endpoints as needed
 };
 
